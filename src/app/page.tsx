@@ -9,6 +9,7 @@ import CheerMeter from "../components/CheerMeter";
 import PollsWidget from "../components/PollsWidget";
 import CricAIAnalyst from "../components/CricAIAnalyst";
 import IplQuiz from "../components/IplQuiz";
+import WinProbability from "../components/WinProbability";
 import {
   LayoutDashboard,
   Sparkles,
@@ -570,6 +571,16 @@ export default function Home() {
                 <div className="lg:col-span-7 space-y-8">
                   {/* Realtime Scoreboard display */}
                   <Scoreboard matchState={matchState} apiError={apiError} />
+
+                  {/* Live Win Probability */}
+                  <WinProbability
+                    battingTeam={matchState.battingTeam}
+                    bowlingTeam={matchState.bowlingTeam}
+                    score={matchState.score}
+                    wickets={matchState.wickets}
+                    overs={matchState.overs}
+                    target={matchState.target}
+                  />
 
                   {/* Sentiment Poll widget */}
                   <PollsWidget
