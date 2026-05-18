@@ -25,6 +25,7 @@ export interface Poll {
   question: string;
   options: { text: string; votes: number }[];
   userVotedIndex?: number;
+  category?: string;
 }
 
 const DEFAULT_PROFILE: UserProfile = {
@@ -198,6 +199,12 @@ export class LocalDB {
       return JSON.parse(data);
     } catch {
       return initialPolls;
+    }
+  }
+
+  static savePolls(polls: Poll[]): void {
+    if (this.isBrowser) {
+      localStorage.setItem("apl_polls", JSON.stringify(polls));
     }
   }
 

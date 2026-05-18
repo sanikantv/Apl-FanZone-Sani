@@ -572,7 +572,15 @@ export default function Home() {
                   <Scoreboard matchState={matchState} apiError={apiError} />
 
                   {/* Sentiment Poll widget */}
-                  <PollsWidget userProfile={userProfile} setUserProfile={setUserProfile} />
+                  <PollsWidget
+                    userProfile={userProfile}
+                    setUserProfile={setUserProfile}
+                    battingTeam={matchState.battingTeam}
+                    bowlingTeam={matchState.bowlingTeam}
+                    score={matchState.score}
+                    overs={matchState.overs}
+                    target={matchState.target}
+                  />
                 </div>
 
                 {/* Gamified Prediction widget right */}
