@@ -217,7 +217,6 @@ export default function Scoreboard({ matchState, apiError }: ScoreboardProps) {
             </div>
           </div>
         </div>
-        </div>
       </div>
 
       {/* Commentary Feed Section */}
