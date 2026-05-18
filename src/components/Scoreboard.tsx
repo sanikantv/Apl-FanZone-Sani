@@ -217,7 +217,33 @@ export default function Scoreboard({ matchState, apiError }: ScoreboardProps) {
             </div>
           </div>
         </div>
+        </div>
       </div>
+
+      {/* Commentary Feed Section */}
+      {matchState.commentary && matchState.commentary.length > 0 && (
+        <div className="mt-6 border-t border-zinc-800 pt-6">
+          <h4 className="text-xs font-black uppercase tracking-wider text-zinc-500 mb-4 flex items-center gap-2">
+            <Tv className="h-4 w-4 text-emerald-400" /> Live Commentary Feed
+          </h4>
+          <div className="space-y-3 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
+            {matchState.commentary.map((comm, idx) => (
+              <div key={idx} className="flex gap-4 items-start bg-zinc-950/40 p-3.5 rounded-2xl border border-zinc-800/50">
+                <span className={`text-xs font-black px-2 py-1 rounded-lg shrink-0 mt-0.5 ${
+                  comm.type === "boundary" ? "bg-blue-900/40 text-blue-400 border border-blue-800/50" : 
+                  comm.type === "wicket" ? "bg-red-900/40 text-red-400 border border-red-800/50" : 
+                  "bg-emerald-900/40 text-emerald-400 border border-emerald-800/50"
+                }`}>
+                  {comm.ball}
+                </span>
+                <p className={`text-sm leading-snug font-medium ${comm.type === "boundary" || comm.type === "wicket" ? "text-white" : "text-zinc-300"}`}>
+                  {comm.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
